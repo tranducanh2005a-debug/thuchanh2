@@ -17,10 +17,11 @@ export default function OnboardingScreen({ navigation }) {
         <Text style={styles.subtitle}>
           Get your groceries in as fast as one hour
         </Text>
+        <Text style={styles.credit}>Trân Đức Anh - 23810310267</Text>
 
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate("SignIn")}
+          onPress={() => navigation.navigate("Main")}
         >
           <Text style={styles.buttonText}>Get Started</Text>
         </TouchableOpacity>
@@ -64,5 +65,12 @@ const styles = StyleSheet.create({
     height: 50,
     alignSelf: "center",
     marginBottom: 10,
+  },
+  credit: {
+    color: "#fff",
+    fontSize: 12,
+    textAlign: "center",
+    marginBottom: 12,
+    opacity: 0.85,
   },
 });

@@ -37,7 +37,10 @@ export default function SignUpScreen({ navigation }) {
         <Text style={{ color: "#53B175" }}>Privacy Policy</Text>
       </Text>
 
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.replace("Main")}
+      >
         <Text style={styles.buttonText}>Sign Up</Text>
       </TouchableOpacity>
 
