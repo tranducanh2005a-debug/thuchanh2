@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -53,26 +53,54 @@ const categories = [
     image: require("../../assets/images/nuoc.png"),
     icon: <Ionicons name="cart" size={36} color="#0EA5E9" />,
     bgColor: "#EFF6FF",
-    screen: "Beverages", // 👈 thêm dòng này
+    screen: "Search",
   },
 ];
 
 export default function ExploreScreen() {
   const navigation = useNavigation();
+  const [search, setSearch] = useState("");
+
+  const handleSearch = () => {
+    if (search.trim()) {
+      navigation.navigate("Search", { query: search });
+    }
+  };
 
   return (
     <View style={styles.container}>
       <Text style={styles.pageTitle}>Find Products</Text>
 
-      <View style={styles.searchContainer}>
-        <Ionicons name="search" size={20} color="#6B7280" />
-        <TextInput
-          placeholder="Search Store"
-          placeholderTextColor="#9CA3AF"
-          style={styles.searchInput}
-        />
+      {/*SEARCH + FILTER */}
+      <View style={styles.searchRow}>
+        <View style={styles.searchContainer}>
+          <Ionicons name="search" size={20} color="#6B7280" />
+          <TextInput
+            value={search}
+            onChangeText={setSearch}
+            onSubmitEditing={handleSearch}
+            placeholder="Search Store"
+            placeholderTextColor="#9CA3AF"
+            style={styles.searchInput}
+            returnKeyType="search"
+          />
+          {search.length > 0 && (
+            <TouchableOpacity onPress={() => setSearch("")}>
+              <Ionicons name="close-circle" size={18} color="#999" />
+            </TouchableOpacity>
+          )}
+        </View>
+
+        {/* 👉 FILTER BUTTON */}
+        <TouchableOpacity
+          style={styles.filterBtn}
+          onPress={() => navigation.navigate("Filters")}
+        >
+          <Ionicons name="options-outline" size={20} color="#181725" />
+        </TouchableOpacity>
       </View>
 
+      {/* Categories */}
       <ScrollView
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
@@ -81,10 +109,8 @@ export default function ExploreScreen() {
           {categories.map((category) => (
             <TouchableOpacity
               key={category.id}
-              style={[
-                styles.card,
-                { backgroundColor: category.bgColor },
-              ]}
+              style={[styles.card, { backgroundColor: category.bgColor }]}
+              activeOpacity={0.85}
               onPress={() => {
                 if (category.screen) {
                   navigation.navigate(category.screen);
@@ -120,21 +146,41 @@ const styles = StyleSheet.create({
     marginBottom: 24,
     color: "#111827",
   },
+
+
+  searchRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 24,
+    gap: 10,
+  },
+
   searchContainer: {
+    flex: 1,
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#F3F4F6",
     borderRadius: 16,
     paddingHorizontal: 16,
     height: 48,
-    marginBottom: 24,
   },
+
   searchInput: {
     marginLeft: 10,
     flex: 1,
     color: "#111827",
     fontSize: 16,
   },
+
+  filterBtn: {
+    width: 48,
+    height: 48,
+    backgroundColor: "#F3F4F6",
+    borderRadius: 16,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
   scrollContent: {
     paddingBottom: 80,
   },
