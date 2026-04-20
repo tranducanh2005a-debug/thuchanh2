@@ -12,7 +12,6 @@ export default function SignInScreen({ navigation }) {
   return (
     <View style={styles.container}>
       
-      
       <Image
         source={require("../../assets/images/MaskGroup.png")} 
         style={styles.image}
@@ -20,9 +19,7 @@ export default function SignInScreen({ navigation }) {
 
       <Text style={styles.title}>Get your groceries{"\n"}with nectar</Text>
 
-    
       <View style={styles.phoneContainer}>
-        
         <Image
           source={require("../../assets/images/Rectangle 11.png")}
           style={styles.flag}
@@ -46,9 +43,10 @@ export default function SignInScreen({ navigation }) {
       <TouchableOpacity style={[styles.socialBtn, { backgroundColor: "#3B5998" }]}>
         <Text style={styles.btnText}>Continue with Facebook</Text>
       </TouchableOpacity>
+
       <TouchableOpacity
         style={styles.continueBtn}
-        onPress={() => navigation.navigate("Phone")}
+        onPress={() => navigation.navigate("Login")}
       >
         <Text style={styles.continueText}>Continue</Text>
       </TouchableOpacity>

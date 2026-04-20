@@ -25,7 +25,7 @@ export default function LocationScreen({ navigation }) {
 
       <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate("Login")}
+        onPress={() => navigation.replace("Main")}
       >
         <Text style={styles.buttonText}>Submit</Text>
       </TouchableOpacity>

@@ -16,6 +16,8 @@ import MainTab from "./MainTab";
 import ProductDetailScreen from "../screens/ProductDetailScreen";
 import BeverageScreen from "../screens/BeverageScreen";
 import FilterScreen from "../screens/FilterScreen";
+import OrderSuccessScreen from "../screens/OrderSuccessScreen";
+import OrderScreen from "../screens/OrderScreen";
 
 const Stack = createStackNavigator();
 
@@ -38,10 +40,12 @@ export default function AppNavigator() {
       <Stack.Screen name="Verify" component={VerificationScreen} />
       <Stack.Screen name="Location" component={LocationScreen} />
 
-      {/* Main App (Bottom Tab) */}
+      {/* Main App */}
       <Stack.Screen name="Main" component={MainTab} />
+      <Stack.Screen name="OrderSuccess" component={OrderSuccessScreen} />
+      <Stack.Screen name="Orders" component={OrderScreen} />
 
-      {/* Detail / Extra Screens */}
+      {/* Detail */}
       <Stack.Screen name="ProductDetail" component={ProductDetailScreen} />
       <Stack.Screen name="Beverages" component={BeverageScreen} />
       <Stack.Screen name="Filters" component={FilterScreen} />

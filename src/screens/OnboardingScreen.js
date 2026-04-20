@@ -1,7 +1,16 @@
 import React from "react";
 import { View, Text, StyleSheet, ImageBackground, TouchableOpacity, Image } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function OnboardingScreen({ navigation }) {
+  
+  const handleStart = async () => {
+
+    await AsyncStorage.setItem("seenOnboarding", "true");
+
+    navigation.replace("SignIn"); // hoặc "Login"
+  };
+
   return (
     <ImageBackground
       source={require("../../assets/images/8140 1.png")} 
@@ -21,7 +30,7 @@ export default function OnboardingScreen({ navigation }) {
 
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate("Main")}
+          onPress={handleStart}
         >
           <Text style={styles.buttonText}>Get Started</Text>
         </TouchableOpacity>

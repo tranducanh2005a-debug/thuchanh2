@@ -1,11 +1,33 @@
 import React, { useEffect } from "react";
 import { View, Image, Text, StyleSheet } from "react-native";
+import { getData } from "../utils/storage";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function SplashScreen({ navigation }) {
   useEffect(() => {
-    setTimeout(() => {
-      navigation.replace("Onboarding"); 
-    }, 4000); 
+    const checkAppState = async () => {
+      try {
+        const auth = await getData("auth");
+        const seen = await AsyncStorage.getItem("seenOnboarding");
+
+        setTimeout(() => {
+          if (!seen) {
+            navigation.replace("Onboarding");
+          }         
+          else if (!auth || auth.expireAt < Date.now()) {
+            navigation.replace("SignIn");
+          }
+          else {
+            navigation.replace("Main");
+          }
+        }, 4000);
+      } catch (error) {
+        console.log(error);
+        navigation.replace("Onboarding");
+      }
+    };
+
+    checkAppState();
   }, []);
 
   return (

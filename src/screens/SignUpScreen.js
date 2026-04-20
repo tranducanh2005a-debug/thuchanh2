@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -7,13 +7,37 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
+import { saveData } from "../utils/storage"; // 🔥 dùng storage mã hóa
 
 export default function SignUpScreen({ navigation }) {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSignUp = async () => {
+    if (!username || !email || !password) {
+      alert("Nhập đầy đủ thông tin");
+      return;
+    }
+
+    const fakeToken = "signup123";
+
+    const auth = {
+      token: fakeToken,
+      user: { username, email },
+      expireAt: Date.now() + 60 * 1000, 
+    };
+
+    await saveData("auth", auth);
+
+    navigation.replace("Main");
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.logoContainer}>
         <Image
-          source={require("../../assets/images/Groupcarot.png")} 
+          source={require("../../assets/images/Groupcarot.png")}
           style={styles.logo}
         />
       </View>
@@ -23,12 +47,26 @@ export default function SignUpScreen({ navigation }) {
         Enter your credentials to continue
       </Text>
 
-      <TextInput placeholder="Username" style={styles.input} />
-      <TextInput placeholder="Email" style={styles.input} />
+      <TextInput
+        placeholder="Username"
+        style={styles.input}
+        value={username}
+        onChangeText={setUsername}
+      />
+
+      <TextInput
+        placeholder="Email"
+        style={styles.input}
+        value={email}
+        onChangeText={setEmail}
+      />
+
       <TextInput
         placeholder="Password"
         secureTextEntry
         style={styles.input}
+        value={password}
+        onChangeText={setPassword}
       />
 
       <Text style={styles.terms}>
@@ -37,10 +75,7 @@ export default function SignUpScreen({ navigation }) {
         <Text style={{ color: "#53B175" }}>Privacy Policy</Text>
       </Text>
 
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => navigation.replace("Main")}
-      >
+      <TouchableOpacity style={styles.button} onPress={handleSignUp}>
         <Text style={styles.buttonText}>Sign Up</Text>
       </TouchableOpacity>
 

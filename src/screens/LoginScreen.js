@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -7,8 +7,30 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
+import { saveData } from "../utils/storage"; 
 
 export default function LoginScreen({ navigation }) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = async () => {
+    if (email && password) {
+      const fakeToken = "abc123";
+
+      const auth = {
+        token: fakeToken,
+        user: { email },
+        expireAt: Date.now() + 24 * 60 * 60 * 1000,
+      };
+
+      await saveData("auth", auth);
+
+      navigation.replace("Phone");
+    } else {
+      alert("Nhập đầy đủ thông tin");
+    }
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.logoContainer}>
@@ -17,16 +39,25 @@ export default function LoginScreen({ navigation }) {
           style={styles.logo}
         />
       </View>
+
       <Text style={styles.title}>Login</Text>
       <Text style={styles.subtitle}>
         Enter your email and password
       </Text>
 
-      <TextInput placeholder="Email" style={styles.input} />
+      <TextInput
+        placeholder="Email"
+        style={styles.input}
+        value={email}
+        onChangeText={setEmail}
+      />
+
       <TextInput
         placeholder="Password"
         secureTextEntry
         style={styles.input}
+        value={password}
+        onChangeText={setPassword}
       />
 
       <TouchableOpacity>
@@ -35,7 +66,7 @@ export default function LoginScreen({ navigation }) {
 
       <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.replace("Main")}
+        onPress={handleLogin}
       >
         <Text style={styles.buttonText}>Log In</Text>
       </TouchableOpacity>
@@ -52,7 +83,6 @@ export default function LoginScreen({ navigation }) {
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 20, justifyContent: "center" },
   title: { fontSize: 26, fontWeight: "bold" },

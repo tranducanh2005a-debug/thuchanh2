@@ -9,7 +9,7 @@ import {
   TextInput,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { useRoute } from "@react-navigation/native"; // 👈 thêm dòng này
+import { useRoute } from "@react-navigation/native";
 
 const ALL_PRODUCTS = [
   { id: "1", name: "Egg Chicken Red", unit: "4pcs, Price", price: "$1.99", image: require("../../assets/images/pngfuel 16.png") },

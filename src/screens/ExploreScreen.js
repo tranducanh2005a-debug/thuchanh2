@@ -53,7 +53,7 @@ const categories = [
     image: require("../../assets/images/nuoc.png"),
     icon: <Ionicons name="cart" size={36} color="#0EA5E9" />,
     bgColor: "#EFF6FF",
-    screen: "Search",
+    screen: "Beverages",
   },
 ];
 
@@ -91,7 +91,7 @@ export default function ExploreScreen() {
           )}
         </View>
 
-        {/* 👉 FILTER BUTTON */}
+        {/*FILTER BUTTON */}
         <TouchableOpacity
           style={styles.filterBtn}
           onPress={() => navigation.navigate("Filters")}
