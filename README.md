@@ -4,6 +4,9 @@
 - Họ và tên: Trần Đức Anh
 - Mã sinh viên: 23810310267
 
+## Video kết quả chạy chương trình
+https://drive.google.com/file/d/1bfZJWlVHswXEyrPvklQmK4RyENNfvT-O/view?usp=sharing
+
 ## Ảnh kết quả chạy chương trình
 ![23810310267_01_splash](https://github.com/user-attachments/assets/8b7cdfa9-25a1-4a32-99a6-e5756f336a81)
 ![On23810310267_02_ingording](https://github.com/user-attachments/assets/63c790c5-64dc-4113-aaac-1a9771469adb)
@@ -21,3 +24,9 @@
 <img width="922" height="2048" alt="image" src="https://github.com/user-attachments/assets/f9537525-2672-4897-8b74-dea6121b10b1" />
 <img width="922" height="2048" alt="image" src="https://github.com/user-attachments/assets/6650acac-40cc-4e27-9659-5c43c94e5303" />
 <img width="922" height="2048" alt="image" src="https://github.com/user-attachments/assets/dc2aeb18-0df8-4364-a7b7-2befa148d8f4" />
+<img width="922" height="2048" alt="image" src="https://github.com/user-attachments/assets/3b92413c-9f4f-484e-a8a0-ac0402f0167b" />
+<img width="922" height="2048" alt="image" src="https://github.com/user-attachments/assets/40de0f1c-ac7d-40e6-b429-07280e198632" />
+<img width="922" height="2048" alt="image" src="https://github.com/user-attachments/assets/7f60efe9-913a-4fbd-b6a8-7d49ee00c92e" />
+<img width="922" height="2048" alt="image" src="https://github.com/user-attachments/assets/759e8797-6024-4867-b255-c45f411073f6" />
+<img width="922" height="2048" alt="image" src="https://github.com/user-attachments/assets/36f64a48-7502-4390-8405-360238046b18" />
+<img width="922" height="2048" alt="image" src="https://github.com/user-attachments/assets/a3d29c03-2246-4b0a-a36a-c5d95786ec7d" />
